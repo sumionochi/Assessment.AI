@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Assess {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name            String
+  jobProfile      String
+  jobtype         String
+  companyName     String
+  jobRequirements String
+
+  level     String
+  questions String[]
+
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("assess")
+}
+
+model Result {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  jobProfile      String
+  jobtype         String
+  companyName     String
+  jobRequirements String
+
+  level     String
+  questions Question[]
+
+  overview  String
+  analytics Analytics[]
+
+  userId    String
+  createdAt DateTime @default(now())
+
+  @@map("result")
+}
+
+model Automated_Assess {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name            String
+  jobProfile      String
+  jobtype         String
+  companyName     String
+  jobRequirements String
+
+  level     String
+  questions String[]
+
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("automated_assess")
+}
+
+model Automated_Result {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  jobProfile      String
+  jobtype         String
+  companyName     String
+  jobRequirements String
+
+  level     String
+  questions Question[]
+
+  overview  String
+  analytics Analytics[]
+
+  userId    String
+  createdAt DateTime @default(now())
+
+  @@map("automated_Result")
+}
+
+model Analytics {
+  id                 String            @id @default(auto()) @map("_id") @db.ObjectId
+  parameter          String
+  points             Int
+  maxPoints          Int
+  result             Result?           @relation(fields: [resultId], references: [id])
+  resultId           String?           @db.ObjectId
+  automated_Result   Automated_Result? @relation(fields: [automated_ResultId], references: [id])
+  automated_ResultId String?           @db.ObjectId
+}
+
+model Question {
+  id                 String            @id @default(auto()) @map("_id") @db.ObjectId
+  question           String
+  answer             String
+  isAI               Boolean
+  strengths          Strength[]
+  improvements       Improvement[]
+  result             Result?           @relation(fields: [resultId], references: [id])
+  resultId           String?           @db.ObjectId
+  automated_Result   Automated_Result? @relation(fields: [automated_ResultId], references: [id])
+  automated_ResultId String?           @db.ObjectId
+
+  @@map("question")
+}
+
+model Strength {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  feedbackHeading String
+  feedback        String
+
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId String?   @db.ObjectId
+}
+
+model Improvement {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  feedbackHeading String
+  feedback        String
+
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId String?   @db.ObjectId
+}
