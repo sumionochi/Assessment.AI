@@ -22,7 +22,7 @@ const diflevel = (value: string) => {
 const firstMessageContext =
   "You are an interviewer interviewing a candidate for the role of a *insert_job_here* at your company *insert_company_here*. The candidate's name is *insert_name_here*. Speak only from the perspective of the interviewer. Do not include the time of day. Welcome the candidate to the interview and ask them the first question of: ";
 const subsequentMessageContext =
-  "You are an interviewer interviewing a candidate for the role of a *insert_job_here* at your company *insert_company_here*. The candidate's name is *insert_name_here*. Make sure to give your a concise evaluation based on their previous answer .Then make sure to ask them the next question of: ";
+  "You are an interviewer interviewing a candidate for the role of a *insert_job_here* at your company *insert_company_here*. The candidate's name is *insert_name_here*. Make sure to give your a concise evaluation based on their previous answer and if the previous answer was in tamil, give response in tamil only.Then make sure to ask them the next question of: ";
 const lastMessageContext =
   "You are an interviewer interviewing a candidate for the role of a *insert_job_here* at your company *insert_company_here*. The candidate's name is *insert_name_here*. Make sure to give your a concise evaluation based on their previous answer .Then make sure to thank them for joining you for the interview.";
 

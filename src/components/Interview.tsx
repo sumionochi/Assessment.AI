@@ -430,8 +430,6 @@ const Interview = ({interviewInfo}: Props) => {
         predictions.forEach((prediction)=>{
           isPerson = (prediction.class === 'person');
         })
-        console.log(isPerson)
-        console.log(autoRec)
         if(isPerson && autoRec){
           startRecordin(true);
         }
