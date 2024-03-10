@@ -4,10 +4,12 @@ import prisma from "@/lib/db";
 import AssessmentDisplay from "@/components/AssessmentDisplay";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, PencilRuler, ScrollIcon, ScrollTextIcon, StickyNote } from "lucide-react";
+import { ArrowRight, BookOpenCheck, PencilRuler, ScrollIcon, ScrollTextIcon, StickyNote, Text } from "lucide-react";
 import AutomatedAssessmentButton from "@/components/AutomatedAssessButton";
 import { User } from "@clerk/nextjs/server";
 import AutomatedAssessmentDisplay from "@/components/AutomatedAssessmentDisplay";
+import InputImg from "@/components/InputImg";
+import InputPdf from "@/components/InputPdf";
 
 type Props = {
 }
@@ -39,12 +41,21 @@ const InterviewerDashboard = async({}: Props) => {
   return (
     <div className="flex flex-col max-w-6xl mx-auto mt-10 gap-8 p-4 mb-10">
 
+      <div>
+        <h1 className="bg-secondary flex flex-row gap-2 w-fit mb-4 p-2 px-4 shadow-md shadow-black text-lg text-start rounded-lg text-gray-600 dark:text-gray-400 items-center"><Text className="w-5 h-5"/>Extract Context for Assessment</h1>
+        <div className="w-full flex flex-col sm:flex-row gap-4">
+          <InputImg/>
+          <InputPdf/>
+        </div>
+      </div>
+
       <div className="flex flex-col gap-4">
         {/* <Calendar EveryAssessment={EveryAssessment}/>
         <IssueChart EveryAssessment={EveryAssessment}/> */}
         {/* {EveryResult.map((result) => (
                 <ResultDisplay result={result} key={result.id} />
               ))} */}
+
       </div>
 
       {/* <AIChatButton/> */}

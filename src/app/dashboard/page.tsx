@@ -8,11 +8,13 @@ import { Button } from "react-day-picker";
 import AssessButton from "@/components/AssessButton";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, PencilRuler, ScrollIcon, ScrollTextIcon, SearchCheck, StickyNote, Trophy } from "lucide-react";
+import { ArrowRight, BookOpenCheck, PencilRuler, ScrollIcon, ScrollTextIcon, SearchCheck, StickyNote, Text, Trophy } from "lucide-react";
 import { SelectSeparator } from "@/components/ui/select";
 import AutomatedAssessmentDisplay from "@/components/AutomatedAssessmentDisplay";
 import IssueChart from "@/components/IssueChart";
 import Calendar from "@/components/Calender";
+import InputImg from "@/components/InputImg";
+import InputPdf from "@/components/InputPdf";
 
 export const metadata: Metadata = {
   title: 'AssessMe.AI - Display Page'
@@ -53,6 +55,14 @@ const Dashboard = async ({}: Props) => {
       <div className="flex flex-col gap-4">
         <Calendar EveryResolve={EveryResult} EveryAssessment={EveryAssessment} EveryAutoAssessment={EveryAutoAssessment}/>
         <IssueChart EveryResolve={EveryResult} EveryAssessment={EveryAssessment} EveryAutoAssessment={EveryAutoAssessment}/>
+      </div>
+
+      <div>
+        <h1 className="bg-secondary flex flex-row gap-2 w-fit mb-4 p-2 px-4 shadow-md shadow-black text-lg text-start rounded-lg text-gray-600 dark:text-gray-400 items-center"><Text className="w-5 h-5"/>Extract Context for Assessment</h1>
+        <div className="w-full flex flex-col sm:flex-row gap-4">
+          <InputImg/>
+          <InputPdf/>
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
