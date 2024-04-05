@@ -43,11 +43,11 @@ const Dashboard = async ({}: Props) => {
       analytics: true,
     }, });
   const EveryAutoAssessment = await prisma.automated_Assess.findMany({ });
-    const level = (num:string) => {
-      if(num=='1') return 'Beginner'
-      else if (num=='2') return 'Intermediate'
-      else return 'Expert' 
-    }
+  const level = (num:string) => {
+    if(num=='1') return 'Beginner'
+    else if (num=='2') return 'Intermediate'
+    else return 'Expert' 
+  }
 
   return (
     <div className="flex flex-col max-w-6xl mx-auto mt-10 gap-8 p-4 mb-4">

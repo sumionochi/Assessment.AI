@@ -7,7 +7,7 @@ import { Dialog,DialogTitle, DialogContent, DialogFooter, DialogHeader } from '.
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from './ui/button'
 import { ArrowLeft, ArrowRight, Loader2, MinusCircle, Plus, PlusCircle, Star, Trash } from 'lucide-react'
 import { Assess } from '@prisma/client'
@@ -23,6 +23,13 @@ type Props = {
     open: boolean,
     setOpen: (open: boolean) => void,
     toEdit?: Assess, 
+    searchParams?: {
+        id: string,
+        jobProfile: string,
+        jobType: string,
+        companyName: string,
+        jobRequirements: string,
+    } 
 }
 
 interface StyledDraggableProps {
@@ -35,6 +42,14 @@ const NewAssessment = ({open, setOpen, toEdit}: Props) => {
     const [curateWithAILoading, setCurateWithAILoading] = useState(false);
     const router = useRouter();
 
+    const searchParams = useSearchParams();
+
+    const id = searchParams.get('id');
+    const jobProfile = searchParams.get('jobProfile');
+    const jobType = searchParams.get('jobType');
+    const companyName = searchParams.get('companyName');
+    const jobRequirements = searchParams.get('jobRequirements');
+
     const StyledDraggable = styled.div<StyledDraggableProps>`
     top: auto !important;
     left: auto !important;
@@ -44,10 +59,10 @@ const NewAssessment = ({open, setOpen, toEdit}: Props) => {
         resolver: zodResolver(createAssessSchema),
         defaultValues: {
             name: toEdit?.name || "",
-            jobProfile: toEdit?.jobProfile || "",
-            jobtype: toEdit?.jobtype || "",
-            companyName: toEdit?.companyName || "",
-            jobRequirements: toEdit?.jobRequirements || "",
+            jobProfile: toEdit?.jobProfile || jobProfile || "",
+            jobtype: toEdit?.jobtype || jobType || "",
+            companyName: toEdit?.companyName || companyName || "",
+            jobRequirements: toEdit?.jobRequirements || jobRequirements || "",
             level: toEdit?.level || "",
             questions: toEdit?.questions || [],
         },
@@ -223,9 +238,9 @@ const NewAssessment = ({open, setOpen, toEdit}: Props) => {
                                                 </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                {['Internship', 'Part-Time', 'Full-Time', 'Contract'].map((title) => {
+                                                {['Internship', 'Part-Time', 'Full-Time', 'Contract', jobType || 'Cohort'].map((title) => {
                                                     return (
-                                                    <SelectItem value={title.toString()} key={title}>
+                                                    <SelectItem value={title!.toString()} key={title}>
                                                         {title}
                                                     </SelectItem>
                                                     );
@@ -373,18 +388,18 @@ const NewAssessment = ({open, setOpen, toEdit}: Props) => {
                                 Submit
                             </Button>
                             <Button type='button' onClick={()=>{
-                                form.trigger(['name','jobProfile','companyName','jobtype','jobRequirements'])                              
+                                form.trigger(['name'])                              
                                 const name = form.getFieldState('name')
-                                const jobProfile = form.getFieldState('jobProfile')
-                                const companyName = form.getFieldState('companyName')
-                                const jobtype = form.getFieldState('jobtype')
-                                const jobRequirements = form.getFieldState('jobRequirements')
+                                // const jobProfile = form.getFieldState('jobProfile')
+                                // const companyName = form.getFieldState('companyName')
+                                // const jobtype = form.getFieldState('jobtype')
+                                // const jobRequirements = form.getFieldState('jobRequirements')
                                 
                                 if(!toEdit && (!name.isDirty || name.invalid)) return;
-                                if(!toEdit && (!jobProfile.isDirty || jobProfile.invalid)) return;
-                                if(!toEdit && (!companyName.isDirty || companyName.invalid)) return;
-                                if(!toEdit && (!jobtype.isDirty || jobtype.invalid)) return;
-                                if(!toEdit && (!jobRequirements.isDirty || jobRequirements.invalid)) return;
+                                // if(!toEdit && (!jobProfile.isDirty || jobProfile.invalid)) return;
+                                // if(!toEdit && (!companyName.isDirty || companyName.invalid)) return;
+                                // if(!toEdit && (!jobtype.isDirty || jobtype.invalid)) return;
+                                // if(!toEdit && (!jobRequirements.isDirty || jobRequirements.invalid)) return;
 
                                 setFormStep(1)
                                 }} className={cn('p-5 shadow-md shadow-black border-none bg-gradient-to-tl from-violet-500 to-violet-300 text-white rounded-xl', {hidden: formStep == 1})}>
@@ -392,19 +407,19 @@ const NewAssessment = ({open, setOpen, toEdit}: Props) => {
                                 <ArrowRight className='w-5 h-5 ml-1'/>
                             </Button>
                             <Button type='button' onClick={()=>{
-                                form.trigger(['name','jobProfile','companyName','jobtype','jobRequirements'])
+                                form.trigger(['name'])
                                 
                                 const name = form.getFieldState('name')
-                                const jobProfile = form.getFieldState('jobProfile')
-                                const companyName = form.getFieldState('companyName')
-                                const jobtype = form.getFieldState('jobtype')
-                                const jobRequirements = form.getFieldState('jobRequirements')
+                                // const jobProfile = form.getFieldState('jobProfile')
+                                // const companyName = form.getFieldState('companyName')
+                                // const jobtype = form.getFieldState('jobtype')
+                                // const jobRequirements = form.getFieldState('jobRequirements')
                                 
                                 if(!toEdit && (!name.isDirty || name.invalid)) return;
-                                if(!toEdit && (!jobProfile.isDirty || jobProfile.invalid)) return;
-                                if(!toEdit && (!companyName.isDirty || companyName.invalid)) return;
-                                if(!toEdit && (!jobtype.isDirty || jobtype.invalid)) return;
-                                if(!toEdit && (!jobRequirements.isDirty || jobRequirements.invalid)) return;
+                                // if(!toEdit && (!jobProfile.isDirty || jobProfile.invalid)) return;
+                                // if(!toEdit && (!companyName.isDirty || companyName.invalid)) return;
+                                // if(!toEdit && (!jobtype.isDirty || jobtype.invalid)) return;
+                                // if(!toEdit && (!jobRequirements.isDirty || jobRequirements.invalid)) return;
 
                                 setFormStep(0)
                                 }} className={cn('p-5 shadow-md shadow-black border-none bg-gradient-to-tl from-violet-500 to-violet-300 text-white rounded-xl ', {hidden: formStep == 0})}>

@@ -27,6 +27,7 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
+    "@react-three/fiber": "^8.16.1",
     "@svgr/webpack": "^8.1.0",
     "@tensorflow-models/coco-ssd": "^2.2.3",
     "@tensorflow/tfjs-backend-cpu": "^4.17.0",
