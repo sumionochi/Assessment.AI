@@ -27,7 +27,7 @@ const JobPortal: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/getJobListing")
+    fetch("https://assessment-ai.vercel.app/api/getJobListing")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
