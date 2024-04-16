@@ -25,11 +25,11 @@ const NavHeader = ({userId}: Props) => {
                   <UserButton afterSignOutUrl='/' appearance={{elements:{avatarBox:{width:'2.5rem', height:"2.5rem"}}}}/>
                   <Button className='p-3 border-none bg-gradient-to-br from-violet-500 to-violet-300 text-white rounded-md shadow-sm shadow-black' ><Link href={`/dashboard`}><MonitorCheck className='w-5 h-5'/></Link></Button>
                   <Button className='p-3 border-none bg-gradient-to-br from-violet-500 to-violet-300 text-white rounded-md shadow-sm shadow-black' ><Link href={`/dashboard_interviewer`}><Pencil className='w-5 h-5'/></Link></Button>
-                  <Button className="p-3 border-none bg-gradient-to-br from-violet-500 to-violet-300 text-white rounded-md shadow-sm shadow-black">
+{/*                   <Button className="p-3 border-none bg-gradient-to-br from-violet-500 to-violet-300 text-white rounded-md shadow-sm shadow-black">
                     <Link href={`/joinYourInterview`}>
                       <Search className="w-5 h-5" />
                     </Link>
-                  </Button>
+                  </Button> */}
                 </div>
               }
               <Themetoggle/>
