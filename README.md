@@ -5,7 +5,7 @@ For more information, visit our [Prototype POC](https://youtu.be/CAHjdSgKo1Y).
 
 AssessMe.AI is an AI-driven recruitment and assessment automation platform designed to enhance the hiring process by providing personalized questions, virtual AI interviews, feedback, and analytics. The platform aims to create a fair and transparent recruitment experience by addressing common issues in traditional hiring methods.
 
-![Screenshot 2024-06-22 163846](https://github.com/sumionochi/Assessment.AI/assets/89721628/bdb6f8b9-92ff-44e5-9ec5-a91891680cb9)
+![image](https://github.com/sumionochi/Assessment.AI/assets/89721628/64ddc9e6-fe28-40dd-be6d-33f4f264eead)
 
 ![Screenshot 2024-06-22 170409](https://github.com/sumionochi/Assessment.AI/assets/89721628/0619a6a2-7859-4e0e-a46e-95e49e60a4b7)
 
