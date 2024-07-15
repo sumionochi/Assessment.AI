@@ -1,7 +1,7 @@
 # AssessMe.AI
 
 ## Overview
-For more information, visit our [Prototype Video Demo](https://youtu.be/CAHjdSgKo1Y).
+For more information, visit [Prototype Video Demo](https://youtu.be/CAHjdSgKo1Y).
 [Deployed Project](https://assessment-ai.vercel.app/)
 
 AssessMe.AI is an AI-driven recruitment and assessment automation platform designed to enhance the hiring process by providing personalized questions, virtual AI interviews, feedback, and analytics. The platform aims to create a fair and transparent recruitment experience by addressing common issues in traditional hiring methods.
